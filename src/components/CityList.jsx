@@ -7,7 +7,6 @@ import Message from './Message';
 
 // eslint-disable-next-line react/prop-types
 export default function CityList({cities, isLoading}){
-    console.log(cities,isLoading);
     const message = 'No Cities Added'
 
     if(isLoading) return <Spinner />
