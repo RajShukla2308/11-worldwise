@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 
 const CitiesContext = createContext();
@@ -33,8 +33,13 @@ function CitiesProvider({children}){
   return <CitiesContext.Provider value={{cities: cities, isLoading: isLoading}}>
         {children}
   </CitiesContext.Provider>
-
-
 }
 
-export { CitiesContext, CitiesProvider}
+function useCities(){
+  const context = useContext(CitiesContext);
+  if(context === undefined) throw new Error('Cities context was used outside the cities provider')
+  return context;
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export { CitiesProvider, useCities }

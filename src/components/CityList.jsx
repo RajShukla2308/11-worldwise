@@ -3,11 +3,13 @@ import styles from './CityList.module.css';
 import Spinner from './Spinner';
 import CityItem from './CityItem';
 import Message from './Message';
+import { useCities } from '../contexts/CityContext';
 
 
 // eslint-disable-next-line react/prop-types
-export default function CityList({cities, isLoading}){
-    const message = 'No Cities Added'
+export default function CityList(){
+    const message = 'No Cities Added';
+    const {cities, isLoading} = useCities();
 
     if(isLoading) return <Spinner />
 
