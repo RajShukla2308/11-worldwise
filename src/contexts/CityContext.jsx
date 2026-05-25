@@ -5,9 +5,9 @@ const CitiesContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 function CitiesProvider({children}){
-
-    const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState([]);
   const [isLoading,setIsLoading] = useState(false);
+  const [currentCity, setCurrentCity] = useState({});
 
 
   useEffect(function(){
@@ -30,7 +30,22 @@ function CitiesProvider({children}){
   },[])
 
 
-  return <CitiesContext.Provider value={{cities: cities, isLoading: isLoading}}>
+  async function getCity(id){
+      try{
+          setIsLoading(true)
+          const res = await fetch(`http://localhost:8000/cities/${id}`);
+          const data = await res.json();
+          setCurrentCity(data);
+      }catch{
+        alert('something went wrong fetching city');
+      }finally{
+        setIsLoading(false);
+      }
+  }
+
+
+  return <CitiesContext.Provider value={{cities,
+  isLoading,currentCity,getCity}}>
         {children}
   </CitiesContext.Provider>
 }
