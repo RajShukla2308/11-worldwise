@@ -1,22 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Map.module.css';
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import { useEffect, useState } from 'react';
 import { useCities } from '../contexts/CityContext';
 import { useGeolocation } from '../hooks/useGeoLocation';
 import Button from '../components/Button';
+import { useUrlPosition } from '../hooks/useUrlPosition';
 
 
 
 
 export default function Map(){
 
-  // eslint-disable-next-line no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
-   // eslint-disable-next-line no-unused-vars
-  const mapLat = searchParams.get('lat') || 40; const mapLng = searchParams.get('lng') || 0;
+  // // eslint-disable-next-line no-unused-vars
+  // const [searchParams, setSearchParams] = useSearchParams();
+  //  // eslint-disable-next-line no-unused-vars
+  // const mapLat = searchParams.get('lat') || 40; const mapLng = searchParams.get('lng') || 0;
 
+  const [mapLat, mapLng] = useUrlPosition();
+ 
 
   // eslint-disable-next-line no-unused-vars
   const [mapPosition, setMapPosition] = useState([40,0])
