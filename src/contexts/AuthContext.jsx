@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 
 const AuthContext = createContext();
@@ -45,8 +45,9 @@ function AuthProvider({children}){
     const [{user,isAuthenticated},dispatch] = useReducer(reducer, initialState) 
 
 
-    function login({email,password}){
+    function login(email,password){
         if(email === FAKE_USER.email && password===FAKE_USER.password){
+            console.log('login successfull');
             dispatch({type: 'loggedin',payload: FAKE_USER })
         }
     }
@@ -60,7 +61,7 @@ function AuthProvider({children}){
 }
 
 function useAuth(){
-    const context = createContext(AuthContext);
+    const context = useContext(AuthContext);
     if(context === undefined) throw new Error('Trying to access outside context');
     return context;
 }
