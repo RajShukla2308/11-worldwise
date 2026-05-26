@@ -47,6 +47,30 @@
         "lat": "43.8503744993026"
       },
       "id": 98443205
+    },
+    {
+      "cityName": "Castello de la Plana",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-05-26T04:57:43.365Z",
+      "notes": "sdbdf",
+      "position": {
+        "lng": "-0.06454467773437501",
+        "lat": "39.97764627359865"
+      },
+      "id": 98443206
+    },
+    {
+      "cityName": "Pucol",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-05-26T04:58:24.817Z",
+      "notes": "sdf",
+      "position": {
+        "lng": "-0.30761718750000006",
+        "lat": "39.620499321968104"
+      },
+      "id": 98443207
     }
   ]
 }
